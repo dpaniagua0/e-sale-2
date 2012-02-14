@@ -21,7 +21,7 @@
       $_SESSION['login_user'] = $myusername;
       $_SESSION['id_usuario'] = $id_usuario;
       if ($perfil == "1") {
-        header("location: inicio.php");
+        header("location: inventario/index.php");
       }
     } else {
       $error = "Usuario y/o Password incorrectos";
