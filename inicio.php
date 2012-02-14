@@ -42,10 +42,12 @@ include('lock.php');
                   <th>Producto</th>
                   <th>Categoria</th>
                   <th>Precio</th>
+                  <th>Unidades</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
+                  <td></td>
                   <td></td>
                   <td></td>
                   <td></td>

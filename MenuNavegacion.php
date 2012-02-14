@@ -1,7 +1,7 @@
 <div class="well span2 nav-menu">
   <div class="clearfix">
     <ul class="nav nav-list">
-      <li class="nav-header">List header</li>
+      <li class="nav-header">Lista navegación</li>
       <li>
         <a href="inicio.php">
           <i class="icon-home"></i>
