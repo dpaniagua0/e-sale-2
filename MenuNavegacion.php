@@ -4,12 +4,6 @@
       <li class="nav-header">Lista navegación</li>
       <li>
         <a href="../inventario/index.php">
-          <i class="icon-home"></i>
-          Inicio
-        </a>
-      </li>
-      <li>
-        <a href="../inventario/create.php">
           <i class="icon-book"></i>
           Inventario
         </a>

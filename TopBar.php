@@ -10,7 +10,7 @@
           </a>
           <ul class="dropdown-menu">
             <li>
-              <a href="logout.php">Cerrar sesión</a>
+              <a href="../logout.php">Cerrar sesión</a>
             </li>
           </ul>
         </div>     

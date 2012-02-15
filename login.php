@@ -38,6 +38,7 @@
     <script type="text/javascript" src="bootstrap/js/bootstrap-buttons.js"></script>
     <script type="text/javascript" src="bootstrap/js/bootstrap-modal.js"></script>
     <script type="text/javascript" src="bootstrap/js/bootstrap-alerts.js"></script>
+    <script type="text/javascript" src="bootstrap/js/utilities.js"></script>
     <title>e-sale</title>
   </head>
   <body>
@@ -71,7 +72,7 @@
           <div class="row">
             <div class="span6">
               <p>
-                <input class="btn btn-primary btn-large" value="Entrar" type="submit"/>
+                <input id="login-button" class="btn btn-large" onmouseover="changeClass()" onmouseout="restoreClass()" value="Entrar" type="submit"/>
               </p>
             </div>
           </div>

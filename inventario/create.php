@@ -28,6 +28,32 @@ include('../lock.php');
       <div class="row">
         <?php include("../MenuNavegacion.php"); ?>
         <div class="well main-container" style="text-align: center;">
+          <div class="alert alert-success hidden">
+            <a data-dismiss="alert" href="#" class="close">&times;</a>
+            <p>El producto ha sido registrado con exito.</p> 
+          </div>
+          <div class="row">
+            <div class="span12">
+              <form class="add-product">
+                <div>
+                  <div class="clearfix">
+                    <label for="producto">Producto:</label>
+                    <div class="input">
+                      <input class="span5" id="producto" name="producto" type="text"/>
+                      <span class="help-block">Requerido.</span>
+                    </div>
+                  </div>
+                  <div class="clearfix">
+                    <label for="user_full_name">Your Full Name:</label>
+                    <div class="input">
+                      <input class="span5" id="user_full_name" name="user[full_name]" type="text"/>
+                      <span class="help-block">Requerido.</span>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
     </div>

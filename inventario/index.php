@@ -14,7 +14,7 @@ include('../lock.php');
     <link href="../bootstrap/css/default.css" rel="stylesheet"/>
     <script type="text/javascript" src="../bootstrap/js/jquery-1.7.1.min.js"></script>
     <script type="text/javascript" src="../bootstrap/js/jquery-ui.js"></script>
-    <script type="text/javascript" src="./bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript" src="../bootstrap/js/bootstrap.js"></script>
     <script type="text/javascript" src="../bootstrap/js/bootstrap-buttons.js"></script>
     <script type="text/javascript" src="../bootstrap/js/bootstrap-modal.js"></script>
     <script type="text/javascript" src="../bootstrap/js/bootstrap-alerts.js"></script>
@@ -27,12 +27,23 @@ include('../lock.php');
     <div>
       <div class="row">
         <?php include("../MenuNavegacion.php"); ?>
-        <div class="well main-container" style="text-align: center;">
+        <div class="well main-container" >
           <div>
             <form class="form-search">
               <input type="text" class="input-xxlarge search-query"/>
               <button type="submit" class="btn">Buscar</button>
             </form>
+          </div>
+          <div class="btn-group nav-action">
+            <a class="btn btn-primary" href="#"><i class="icon-white icon-cog"></i></a>
+            <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="../inventario/create.php"><i class="icon-plus-sign"></i>Agregar</a></li>
+              <li><a href="../inventario/create.php"><i class="icon-pencil"></i>Editar</a></li>
+              <li><a href="#"><i class="icon-trash"></i>Eliminar</a></li>
+            </ul>
           </div>
           <div>
             <table class="table table-striped table-bordered table-condensed">
