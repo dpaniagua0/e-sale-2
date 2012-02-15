@@ -24,36 +24,85 @@ include('../lock.php');
     <?php
     include("../TopBar.php");
     ?>
-    <div>
-      <div class="row">
-        <?php include("../MenuNavegacion.php"); ?>
-        <div class="well main-container" style="text-align: center;">
-          <div class="alert alert-success hidden">
-            <a data-dismiss="alert" href="#" class="close">&times;</a>
-            <p>El producto ha sido registrado con exito.</p> 
-          </div>
-          <div class="row">
+    <div class="row">
+      <?php include("../MenuNavegacion.php"); ?>
+      <div class="well main-container">
+        <div class="alert alert-success hidden">
+          <a data-dismiss="alert" href="#" class="close">&times;</a>
+          <p>El producto ha sido registrado con exito.</p> 
+        </div>
+        <div class="row show-grid">
+          <form>
             <div class="span12">
-              <form class="add-product">
-                <div>
+              <div class="row">
+                <div class="span6">
                   <div class="clearfix">
-                    <label for="producto">Producto:</label>
+                    <label for="producto">Producto</label>
                     <div class="input">
                       <input class="span5" id="producto" name="producto" type="text"/>
                       <span class="help-block">Requerido.</span>
                     </div>
                   </div>
-                  <div class="clearfix">
-                    <label for="user_full_name">Your Full Name:</label>
-                    <div class="input">
-                      <input class="span5" id="user_full_name" name="user[full_name]" type="text"/>
+                  <div class="control-group">
+                    <label class="control-label" for="descrip">Descripcción</label>
+                    <div class="controls">
+                      <textarea class="span5 input-xlarge" id="descrip" rows="10"></textarea>
+                    </div>
+                  </div>
+                </div>
+                <div class="span3">
+                  <div class="control-group">
+                    <label class="control-label" for="select01">Categoria</label>
+                    <div class="controls">
+                      <select id="select01">
+                        <option>something</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                      </select>
+                    </div>
+                    <span class="help-block">Requerido.</span>
+                  </div>
+                  <div class="control-group">
+                    <label class="control-label" for="precio">Precio</label>
+                    <div class="controls">
+                      <div class="input-append">
+                        <input class="span2" id="precio" size="16" type="text"/>
+                        <span class="add-on">.00</span>
+                      </div>
                       <span class="help-block">Requerido.</span>
                     </div>
                   </div>
                 </div>
-              </form>
+                <div class="span3">
+                  <div class="control-group">
+                    <label class="control-label" for="marca">Marca</label>
+                    <div class="controls">
+                      <select id="marca">
+                        <option>something</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                      </select>
+                    </div>
+                    <span class="help-block">Requerido.</span>
+                  </div>
+                  <div class="control-group">
+                    <label class="control-label" for="unidad">Unidades</label>
+                    <div class="controls">
+                      <div class="input-append">
+                        <input class="span2" id="unidad" size="16" type="text"/>
+                        <span class="add-on">0</span>
+                      </div>
+                      <span class="help-block">Requerido.</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
+          </form>
         </div>
       </div>
     </div>

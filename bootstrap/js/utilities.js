@@ -9,8 +9,3 @@ function changeClass(){
 function restoreClass(){
   $('#login-button').removeClass('btn-primary');   
 }
-
- 
- 
- 
- 

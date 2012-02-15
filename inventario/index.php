@@ -29,7 +29,7 @@ include('../lock.php');
         <?php include("../MenuNavegacion.php"); ?>
         <div class="well main-container" >
           <div>
-            <form class="form-search">
+            <form class="form-search" style="text-align: center">
               <input type="text" class="input-xxlarge search-query"/>
               <button type="submit" class="btn">Buscar</button>
             </form>

@@ -11,6 +11,6 @@ $row = mysql_fetch_array($ses_sql);
 $login_session = $row['usuario'];
 
 if (!isset($login_session)) {
-  header("Location: login.php");
+  header("Location: ../login.php");
 }
 ?>
