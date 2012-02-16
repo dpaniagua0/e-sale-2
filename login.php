@@ -32,6 +32,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet"/>
     <link href="bootstrap/css/default.css" rel="stylesheet"/>
+    <link rel="shortcut icon" href="../bootstrap/img/icons/animal-monkey.png"/>
     <script type="text/javascript" src="bootstrap/js/jquery-1.7.1.min.js"></script>
     <script type="text/javascript" src="bootstrap/js/jquery-ui.js"></script>
     <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>

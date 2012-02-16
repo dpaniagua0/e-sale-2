@@ -2,8 +2,6 @@
 include("../config.php");
 include('../lock.php');
 ?>
-
-<!--<h2>Combis</h2>-->
 <table class="table table-striped table-bordered table-condensed">
   <thead>
     <tr>
