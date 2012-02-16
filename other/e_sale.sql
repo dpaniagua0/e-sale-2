@@ -34,7 +34,7 @@ CREATE TABLE `categoria` (
   `id_categoria` bigint(20) NOT NULL AUTO_INCREMENT,
   `categoria` varchar(45) NOT NULL,
   PRIMARY KEY (`id_categoria`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,6 +43,7 @@ CREATE TABLE `categoria` (
 
 LOCK TABLES `categoria` WRITE;
 /*!40000 ALTER TABLE `categoria` DISABLE KEYS */;
+INSERT INTO `categoria` VALUES (1,'laptop'),(2,'pc'),(3,'telefono'),(4,'celular'),(5,'impresora'),(6,'usb'),(7,'mouse'),(8,'disco duro'),(9,'teclado'),(10,'pantalla');
 /*!40000 ALTER TABLE `categoria` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -62,7 +63,7 @@ CREATE TABLE `compra` (
   PRIMARY KEY (`id_compra`),
   KEY `fk_compra_inventario1` (`id_producto`),
   CONSTRAINT `fk_compra_inventario1` FOREIGN KEY (`id_producto`) REFERENCES `inventario` (`id_producto`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -71,6 +72,7 @@ CREATE TABLE `compra` (
 
 LOCK TABLES `compra` WRITE;
 /*!40000 ALTER TABLE `compra` DISABLE KEYS */;
+INSERT INTO `compra` VALUES (1,'2012-02-16 07:26:44',6000,1,10);
 /*!40000 ALTER TABLE `compra` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -80,15 +82,15 @@ UNLOCK TABLES;
 /*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,STRICT_ALL_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,TRADITIONAL,NO_AUTO_CREATE_USER' */ ;
+/*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`gasolinera`@`%`*/ /*!50003 TRIGGER esale.compra_producto 
-BEFORE INSERT ON esale.compra 
-FOR EACH ROW 
+/*!50003 CREATE*/ /*!50017 DEFINER=`gasolinera`@`%`*/ /*!50003 TRIGGER `esale`.`compra_producto`
+BEFORE INSERT ON `esale`.`compra`
+FOR EACH ROW
 BEGIN
-	UPDATE esale.inventario 
-	set esale.inventario.existencia = esale.venta.cantidad + esale.inventario.existencia
-	where esale.compra.id_producto = esale.inventario.id_producto;
+	UPDATE inventario 
+	set inventario.existencia = inventario.existencia + NEW.unidades
+	where new.id_producto = inventario.id_producto;
 END */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -116,7 +118,7 @@ CREATE TABLE `inventario` (
   KEY `fk_producto_marca1` (`id_marca`),
   CONSTRAINT `fk_producto_categoria1` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id_categoria`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_producto_marca1` FOREIGN KEY (`id_marca`) REFERENCES `marca` (`id_marca`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -125,6 +127,7 @@ CREATE TABLE `inventario` (
 
 LOCK TABLES `inventario` WRITE;
 /*!40000 ALTER TABLE `inventario` DISABLE KEYS */;
+INSERT INTO `inventario` VALUES (1,'studio xps',13000,1,11,'latop gamer',18);
 /*!40000 ALTER TABLE `inventario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -139,7 +142,7 @@ CREATE TABLE `marca` (
   `id_marca` bigint(20) NOT NULL AUTO_INCREMENT,
   `marca` varchar(45) NOT NULL,
   PRIMARY KEY (`id_marca`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -148,6 +151,7 @@ CREATE TABLE `marca` (
 
 LOCK TABLES `marca` WRITE;
 /*!40000 ALTER TABLE `marca` DISABLE KEYS */;
+INSERT INTO `marca` VALUES (1,'ASUS'),(2,'GIGABYTE'),(3,'INTEL'),(4,'PC-CHIPS'),(5,'AMD'),(6,'KINGSTON'),(7,'WESTERN D'),(8,'MAXTOR'),(9,'SEAGATE'),(10,'HITACHI'),(11,'DELL');
 /*!40000 ALTER TABLE `marca` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -170,8 +174,8 @@ CREATE TABLE `pedido` (
   KEY `fk_pedido_proveedores1` (`id_proveedor`),
   KEY `fk_pedido_inventario1` (`id_producto`),
   KEY `fk_pedido_usuario1` (`id_usuario`),
-  CONSTRAINT `fk_pedido_proveedores1` FOREIGN KEY (`id_proveedor`) REFERENCES `proveedor` (`id_proveedor`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_pedido_inventario1` FOREIGN KEY (`id_producto`) REFERENCES `inventario` (`id_producto`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_pedido_proveedores1` FOREIGN KEY (`id_proveedor`) REFERENCES `proveedor` (`id_proveedor`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_pedido_usuario1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -286,7 +290,7 @@ CREATE TABLE `venta` (
   KEY `fk_venta_usuario1` (`id_usuario`),
   CONSTRAINT `fk_venta_producto1` FOREIGN KEY (`id_producto`) REFERENCES `inventario` (`id_producto`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_venta_usuario1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -295,6 +299,7 @@ CREATE TABLE `venta` (
 
 LOCK TABLES `venta` WRITE;
 /*!40000 ALTER TABLE `venta` DISABLE KEYS */;
+INSERT INTO `venta` VALUES (1,'2012-02-16 07:25:42','13000',1,1,2);
 /*!40000 ALTER TABLE `venta` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -304,15 +309,15 @@ UNLOCK TABLES;
 /*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,STRICT_ALL_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,TRADITIONAL,NO_AUTO_CREATE_USER' */ ;
+/*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`gasolinera`@`%`*/ /*!50003 TRIGGER esale.venta_producto 
-BEFORE INSERT ON esale.venta 
-FOR EACH ROW 
+/*!50003 CREATE*/ /*!50017 DEFINER=`gasolinera`@`%`*/ /*!50003 TRIGGER `esale`.`venta_producto`
+BEFORE INSERT ON `esale`.`venta`
+FOR EACH ROW
 BEGIN
-	UPDATE esale.inventario 
-	set esale.inventario.existencia = esale.venta.cantidad - esale.inventario.existencia
-	where esale.venta.id_producto = esale.inventario.id_producto;
+	UPDATE inventario 
+	set inventario.existencia = inventario.existencia - NEW.unidades
+	where new.id_producto = inventario.id_producto;
 END */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -329,4 +334,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2012-02-12 19:44:58
+-- Dump completed on 2012-02-16  1:28:09
