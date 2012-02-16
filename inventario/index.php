@@ -46,26 +46,7 @@ include('../lock.php');
             </ul>
           </div>
           <div>
-            <table class="table table-striped table-bordered table-condensed">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Producto</th>
-                  <th>Categoria</th>
-                  <th>Precio</th>
-                  <th>Unidades</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table>
+            <?php include("inventoryTable.php"); ?>
           </div>
         </div>
       </div>

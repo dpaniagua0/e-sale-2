@@ -100,3 +100,7 @@ body {
   margin-top: -10px;
   max-width:620px;
 }
+
+textarea {
+  resize: none;
+}

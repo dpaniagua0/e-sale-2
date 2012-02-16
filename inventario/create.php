@@ -27,7 +27,7 @@ include('../lock.php');
     <div class="row">
       <?php include("../MenuNavegacion.php"); ?>
       <div class="well main-container">
-        <div class="alert alert-success hidden">
+        <div class="alert alert-success hidden" style="text-align: center">
           <a data-dismiss="alert" href="#" class="close">&times;</a>
           <p>El producto ha sido registrado con exito.</p> 
         </div>
@@ -48,6 +48,10 @@ include('../lock.php');
                     <div class="controls">
                       <textarea class="span5 input-xlarge" id="descrip" rows="10"></textarea>
                     </div>
+                  </div>
+                  <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <button type="reset" class="btn">Cancel</button>
                   </div>
                 </div>
                 <div class="span3">
