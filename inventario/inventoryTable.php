@@ -5,7 +5,8 @@ include('../lock.php');
 <table class="table table-striped table-bordered table-condensed">
   <thead>
     <tr>
-      <th>#</th>
+      <th class="columna-checkbox"><input type="checkbox"/></th>
+      <th class="columna-id hide">#</th>
       <th>Producto</th>
       <th>Descripccion</th>
       <th>Categoria</th>
@@ -29,8 +30,9 @@ include('../lock.php');
       $categoria = $fila['categoria'];
       $descripccion = $fila['descripccion'];
       $existencia = $fila['existencia'];
-      echo "          <tr>
-                          <td class='id-combi'>$id_producto</td>
+      echo "          <tr class='alt'>
+                          <td class='columna-checkbox'><input id='checkbox' type='checkbox'/></td>
+                          <td class='columna-id hide'>$id_producto</td>
                           <td>$producto</td>
                           <td>$descripccion</td>
                           <td>$categoria</td>

@@ -9,7 +9,7 @@
         </a>
       </li>
       <li>
-        <a href="#">
+        <a href="../proveedor/index.php">
           <i class="icon-user"></i>
           Proveedores
         </a>

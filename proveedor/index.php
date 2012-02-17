@@ -19,7 +19,7 @@ include('../lock.php');
     <script type="text/javascript" src="../bootstrap/js/bootstrap-buttons.js"></script>
     <script type="text/javascript" src="../bootstrap/js/bootstrap-modal.js"></script>
     <script type="text/javascript" src="../bootstrap/js/bootstrap-alerts.js"></script>
-    <script type="text/javascript" src="../bootstrap/js/inventory.js"></script>
+    <script type="text/javascript" src="../bootstrap/js/suplier.js"></script>
     <title>e-sale</title>
   </head>
   <body>
@@ -42,12 +42,14 @@ include('../lock.php');
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-              <li><a href="../inventario/create.php"><i class="icon-plus-sign"></i>Agregar</a></li>
-              <li><a id="edit-product-link" href="../inventario/create.php"><i class="icon-pencil"></i>Editar</a></li>
-              <li><a id="delete-product-link" href="../inventario/delete.php"><i class="icon-trash"></i>Eliminar</a></li>
+              <li><a href="../proveedor/create.php"><i class="icon-plus-sign"></i>Agregar</a></li>
+              <li><a id="edit-suplier-link" href="../proveedor/edit.php"><i class="icon-pencil"></i>Editar</a></li>
+              <li><a id="delete-suplier-link" href="#"><i class="icon-trash"></i>Eliminar</a></li>
             </ul>
           </div>
-          <?php include("inventoryTable.php"); ?>
+          <div id="contenedor-tabla">
+            <?php include("suplierTable.php"); ?>
+          </div>
         </div>
       </div>
     </div>

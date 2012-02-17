@@ -27,15 +27,14 @@ include('../lock.php');
         var datos;
         datos={
           type:         "POST",
-          url:          "../inventario/insert.php",
+          url:          "../proveedor/insert.php",
           success:      ajaxResponse,
           data:         {
             nombre : $("#nombre").val(),
-            precio : $("#precio").val(),
-            id_categoria: $("#id_categoria"),
-            id_marca: $("#id_marca"),
-            existencia: $("#unidades"),
-            descripccion: $("#descripccion")
+            rfc : $("#rf").val(),
+            telefono: $("#telefono"),
+            direccion: $("#direccion"),
+            email: $("#email")          
           } 
         }
       
@@ -58,47 +57,46 @@ include('../lock.php');
         }
         ?>
         <div class="row show-grid">
-          <form action="../inventario/insert.php" enctype="multipart/form-data" method="POST" onsubmit="insertarRuta(); return false;">
+          <form action="../proveedor/insert.php" enctype="multipart/form-data" method="POST" onsubmit="insertarRuta(); return false;">
             <div class="span12">
               <div class="row">
                 <div class="span6">
                   <div class="clearfix">
-                    <label for="nombre">Producto</label>
+                    <label for="nombre">Nombre</label>
                     <div class="input">
                       <input class="span5" id="nombre" name="nombre" type="text"/>
                       <span class="help-block">Requerido.</span>
                     </div>
                   </div>
                   <div class="control-group">
-                    <label class="control-label" for="descripccion">Descripcción</label>
-                    <div class="controls">
-                      <textarea class="span5 input-xlarge" id="descripccion" name="descripccion" rows="10"></textarea>
+                    <label class="control-label" for="direccion">Direccion</label>
+                    <div class="input">
+                      <input class="span5" id="direccion" name="direccion" type="text"/>
+                      <span class="help-block">Requerido.</span>
                     </div>
                   </div>
                   <div class="form-actions">
                     <button id="enviar" name="enviar" type="submit" class="btn btn-primary">Guardar</button>
-                    <button type="reset" class="btn">Cancel</button>
+                    <button type="reset" class="btn" onclick="location.href='../proveedor/index.php'">Cancel</button>
                   </div>
                 </div>
                 <div class="span3">
                   <div class="control-group">
-                    <label class="control-label" for="id_categoria">Categoria</label>
-                    <div class="controls">
-                      <select id="id_categoria" name="id_categoria">
-                        <?php $Query = mysql_query("SELECT * FROM categoria");
-                        while ($category = mysql_fetch_array($Query)) { ?>  
-                          <option value="<?php echo $category[id_categoria]; ?>"><?php echo $category[categoria]; ?> </option>
-                        <?php } ?>
-                      </select>
-                    </div>
-                    <span class="help-block">Requerido.</span>
-                  </div>
-                  <div class="control-group">
-                    <label class="control-label" for="precio">Precio</label>
+                    <label class="control-label" for="telefono">Telefono</label>
                     <div class="controls">
                       <div class="input-append">
-                        <input class="span2" id="precio" name="precio" size="16" type="text"/>
-                        <span class="add-on">.00</span>
+                        <input class="span2" id="telefono" name="telefono" size="16" type="text"/>
+                        <span class="add-on"><i class="icon-signal"></i></span>
+                      </div>
+                      <span class="help-block">Requerido.</span>
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <label class="control-label" for="email">Correo Electronico</label>
+                    <div class="controls">
+                      <div class="input-append">
+                        <input class="span2" id="email" name="email" size="20" type="text"/>
+                        <span class="add-on"><i class="icon-envelope"></i></span>
                       </div>
                       <span class="help-block">Requerido.</span>
                     </div>
@@ -106,23 +104,11 @@ include('../lock.php');
                 </div>
                 <div class="span3">
                   <div class="control-group">
-                    <label class="control-label" for="id_marca">Marca</label>
-                    <div class="controls">
-                      <select id="id_marca" name="id_marca">
-                        <?php $Query = mysql_query("SELECT * FROM marca");
-                        while ($brand = mysql_fetch_array($Query)) { ?>  
-                          <option value="<?php echo $brand[id_categoria]; ?>"><?php echo $brand[marca]; ?> </option>
-                        <?php } ?>
-                      </select>
-                    </div>
-                    <span class="help-block">Requerido.</span>
-                  </div>
-                  <div class="control-group">
-                    <label class="control-label" for="unidades">Unidades</label>
+                    <label class="control-label" for="rfc">Rfc</label>
                     <div class="controls">
                       <div class="input-append">
-                        <input class="span2" id="unidades" name="unidades" size="16" type="text"/>
-                        <span class="add-on">0</span>
+                        <input class="span2" id="rfc" name="rfc" size="16" type="text"/>
+                        <span class="add-on"><i class="icon-file"></i></span>
                       </div>
                       <span class="help-block">Requerido.</span>
                     </div>
