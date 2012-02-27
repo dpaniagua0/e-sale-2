@@ -44,3 +44,22 @@ include('../lock.php');
     ?>
   </tbody>
 </table>
+
+
+<div id="myModal" class="modal hide fade">
+  <div class="modal-body">
+    Estas seguro, se perderan los datos de forma permanente.
+  </div>
+  <div class="modal-footer">
+    <a id="ok" href="#" class="btn primary">OK</a>
+    <a id="cancel" href="#" class="btn warning">Cancelar</a>
+  </div>
+</div>
+<div id="error-seleccion" class="modal hide fade">
+  <div class="modal-body">
+    <p>Debe selecionar algo.</p>
+  </div>
+  <div class="modal-footer">
+    <a id="error" href="#" class="btn primary">OK</a>
+  </div>
+</div>

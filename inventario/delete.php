@@ -3,8 +3,9 @@
 include("../config.php");
 include('../lock.php');
 
-$id = $_get['id'];
+
+$id = $_POST['id_eliminar'];
 $delete = "DELETE FROM inventario WHERE id_producto = $id";
 mysql_query($delete);
-include('index.php');
+include('../inventario/inventaryTable.php');
 ?>

@@ -43,11 +43,13 @@ include('../lock.php');
             </a>
             <ul class="dropdown-menu">
               <li><a href="../inventario/create.php"><i class="icon-plus-sign"></i>Agregar</a></li>
-              <li><a id="edit-product-link" href="../inventario/create.php"><i class="icon-pencil"></i>Editar</a></li>
-              <li><a id="delete-product-link" href="../inventario/delete.php"><i class="icon-trash"></i>Eliminar</a></li>
+              <li><a id="edit-product-link" href="../inventario/edit.php"><i class="icon-pencil"></i>Editar</a></li>
+              <li><a id="delete-product-link" href="#"><i class="icon-trash"></i>Eliminar</a></li>
             </ul>
           </div>
-          <?php include("inventoryTable.php"); ?>
+          <div id="contenedor-tabla">
+            <?php include("inventoryTable.php"); ?>
+          </div>
         </div>
       </div>
     </div>

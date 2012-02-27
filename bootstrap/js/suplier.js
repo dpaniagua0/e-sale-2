@@ -6,15 +6,34 @@ UVAQ.inicializarTablaProveedores = function(){
     var data = {
       id_eliminar: id
     };
-    if($columnaId.text()){
-      $('div#contenedor-tabla').load('delete.php',data,function(){
-        //        alert('Eliminado');
-        UVAQ.inicializarTablaProveedores();   
+    if($columnaId.text()){  
+      $("#myModal").modal({
+        "backdrop"  : "static",
+        "keyboard"  : true,
+        "show"      : true    
+      });
+      $("#myModal a#ok").click(function(e) {
+        $('div#contenedor-tabla').load('delete.php',data,function(){
+          UVAQ.inicializarTablaProveedores();   
+        });     	    
+        $("#myModal").modal('hide');
+      });
+      $("#myModal a#cancel").click(function(e){
+        $("#myModal").modal('hide');
+        $("td.columna-checkbox").attr('checked', false);
       });
     }else {
-      alert("Debe seleccionar algo");
+      $("#error-seleccion").modal({
+        "backdrop"  : "static",
+        "keyboard"  : true,
+        "show"      : true    
+      });
+      
+      $("#error-seleccion a#error").click(function(){
+        $("#error-seleccion").modal('hide');
+      });
     } 
-  });  
+  });
   $("a#edit-suplier-link").click(function(evento) {
     evento.preventDefault();
     var $ids = $("td.columna-checkbox:has(:checked)").siblings("td.columna-id");
@@ -25,7 +44,15 @@ UVAQ.inicializarTablaProveedores = function(){
       });
       window.location.replace(url);
     } else {
-      alert("Debe seleccionar algo");
+      $("#error-seleccion").modal({
+        "backdrop"  : "static",
+        "keyboard"  : true,
+        "show"      : true    
+      });
+      
+      $("#error-seleccion a#error").click(function(){
+        $("#error-seleccion").modal('hide');
+      });
     }
   });
 };
