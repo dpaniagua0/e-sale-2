@@ -15,7 +15,7 @@
         </a>
       </li>
       <li>
-        <a href="#">
+        <a href="../pedido/index.php">
           <i class="icon-list-alt"></i>
           Pedidos
         </a>

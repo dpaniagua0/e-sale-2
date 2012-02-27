@@ -27,7 +27,7 @@ include('../lock.php');
         var datos;
         datos={
           type:         "POST",
-          url:          "../proveedor/insert.php",
+          url:          "../pedido/insert.php",
           success:      ajaxResponse,
           data:         {
             nombre : $("#nombre").val(),
@@ -57,7 +57,7 @@ include('../lock.php');
         }
         ?>
         <div class="row show-grid">
-          <form action="../proveedor/insert.php" enctype="multipart/form-data" method="POST" onsubmit="insertarRuta(); return false;">
+          <form action="../pedido/insert.php" enctype="multipart/form-data" method="POST" onsubmit="insertarRuta(); return false;">
             <div class="span12">
               <div class="row">
                 <div class="span6">

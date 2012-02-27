@@ -42,13 +42,13 @@ include('../lock.php');
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-              <li><a href="../proveedor/create.php"><i class="icon-plus-sign"></i>Agregar</a></li>
-              <li><a id="edit-suplier-link" href="../proveedor/edit.php"><i class="icon-pencil"></i>Editar</a></li>
-              <li><a id="delete-suplier-link" href="#"><i class="icon-trash"></i>Eliminar</a></li>
+              <li><a href="../pedido/create.php"><i class="icon-plus-sign"></i>Agregar</a></li>
+              <li><a id="edit-order-link" href="../pedido/edit.php"><i class="icon-pencil"></i>Editar</a></li>
+              <li><a id="delete-order-link" href="#"><i class="icon-trash"></i>Eliminar</a></li>
             </ul>
           </div>
           <div id="contenedor-tabla">
-            <?php include("suplierTable.php"); ?>
+            <?php include("orderTable.php"); ?>
           </div>
         </div>
       </div>
