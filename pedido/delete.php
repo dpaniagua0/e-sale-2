@@ -4,7 +4,7 @@ include("../config.php");
 include('../lock.php');
 
 $id = $_POST['id_eliminar'];
-$delete = "DELETE FROM proveedor WHERE id_proveedor = $id";
+$delete = "DELETE FROM pedido WHERE id_pedido = $id";
 mysql_query($delete);
-include('../proveedor/suplierTable.php');
+include('../pedido/orderTable.php');
 ?>

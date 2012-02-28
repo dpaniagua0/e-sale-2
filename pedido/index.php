@@ -19,7 +19,7 @@ include('../lock.php');
     <script type="text/javascript" src="../bootstrap/js/bootstrap-buttons.js"></script>
     <script type="text/javascript" src="../bootstrap/js/bootstrap-modal.js"></script>
     <script type="text/javascript" src="../bootstrap/js/bootstrap-alerts.js"></script>
-    <script type="text/javascript" src="../bootstrap/js/suplier.js"></script>
+    <script type="text/javascript" src="../bootstrap/js/order.js"></script>
     <title>e-sale</title>
   </head>
   <body>
