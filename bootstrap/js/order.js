@@ -1,5 +1,5 @@
 var UVAQ = UVAQ || {};
-UVAQ.inicializarTablaProveedores = function(){
+UVAQ.inicializarTablaPedidos = function(){
   $('a#delete-order-link').click(function(){
     var $columnaId = $("td.columna-checkbox:has(:checked)").first().siblings("td.columna-id").first();
     var id = $columnaId.text();
@@ -14,7 +14,7 @@ UVAQ.inicializarTablaProveedores = function(){
       });
       $("#myModal a#ok").click(function(e) {
         $('div#contenedor-tabla').load('delete.php',data,function(){
-          UVAQ.inicializarTablaProveedores();   
+          UVAQ.inicializarTablaPedidos();   
         });     	    
         $("#myModal").modal('hide');
       });
@@ -58,7 +58,7 @@ UVAQ.inicializarTablaProveedores = function(){
 };
 
 $(function(){
-  UVAQ.inicializarTablaProveedores();
+  UVAQ.inicializarTablaPedidos();
 });
 
 

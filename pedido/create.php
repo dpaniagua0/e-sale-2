@@ -81,7 +81,8 @@ include('../lock.php');
                       </div>
                       <span class="help-block">Requerido.</span>
                     </div>
-                  </div><div class="form-actions">
+                  </div>
+                  <div class="form-actions">
                     <button id="enviar" name="enviar" type="submit" class="btn btn-primary">Guardar</button>
                     <button type="reset" class="btn" onclick="location.href='../pedido/index.php'">Cancel</button>
                   </div>

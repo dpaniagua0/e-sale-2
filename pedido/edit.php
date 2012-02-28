@@ -28,15 +28,13 @@ $id_editar = $_GET['id_editar'];
         var datos;
         datos={
           type:         "POST",
-          url:          "../proveedor/update.php",
+          url:          "../pedido/insert.php",
           success:      ajaxResponse,
           data:         {
-            nombre : $("#nombre").val(),
-            rfc : $("#rf").val(),
-            telefono: $("#telefono"),
-            direccion: $("#direccion"),
-            email: $("#email"),
-            id_editar: $("#id-editar").val()
+            unidades : $("#unidades").val(),
+            precio: $("#precio"),
+            id_proveedor: $("#id-proveedor"),
+            producto: $("#id-producto")  
           } 
         }
       
@@ -60,70 +58,76 @@ $id_editar = $_GET['id_editar'];
         ?>
         <div class="row show-grid">
           <?php
-          $consultaSuplier = "select id_proveedor, nombre, direccion, correo_electronico,telefono, rfc from proveedor where id_proveedor=$id_editar";
-          $resultSuplier = mysql_query($consultaSuplier);
-          $fila = mysql_fetch_array($resultSuplier);
+          $consultaOrder = "select p.id_proveedor,p.id_producto,p.unidades, p.fecha_pedido, s.nombre as proveedor,i.nombre as producto, p.precio from pedido p
+                              left join inventario i on i.id_producto = p.id_producto
+                              left join proveedor s on s.id_proveedor = p.id_proveedor
+                              where p.id_pedido=$id_editar";
+          $resultOrder = mysql_query($consultaOrder);
+          $fila = mysql_fetch_array($resultOrder);
           $id_proveedor = $fila['id_proveedor'];
-          $nomrbe = $fila['nombre'];
-          $direccion = $fila['direccion'];
-          $email = $fila['correo_electronico'];
-          $telefono = $fila['telefono'];
-          $rfc = $fila['rfc'];
+          $id_producto = $fila['id_producto'];
+          $proveedor = $fila['proveedor'];
+          $precio = $fila['precio'];
+          $fechaPedido = $fila['fecha_pedido'];
+          $producto = $fila['producto'];
+          $unidades = $fila['unidades'];
           $_SESSION['id_editar'] = $id_editar;
           ?>
-          <form action="../proveedor/update.php" enctype="multipart/form-data" method="POST" onsubmit="insertarRuta(); return false;">
+          <form action="../pedido/update.php" enctype="multipart/form-data" method="POST" onsubmit="insertarRuta(); return false;">
             <div class="span12">
               <div class="row">
                 <div class="span6">
                   <div class="clearfix">
-                    <label for="nombre">Nombre</label>
-                    <input id="id-editar" name="id-editar" class="hide" type="text" value="<?php echo $id_editar ?>"/>
-                    <div class="input">
-                      <input class="span5" id="nombre" name="nombre" type="text" value="<?php echo $nomrbe ?>"/>
-                      <span class="help-block">Requerido.</span>
+                    <label class="control-label" for="id-producto">Producto</label>
+                    <div class="controls">
+                      <select id="id-producto" name="producto">
+                        <option value="<?php echo $id_producto ?>"><?php echo $producto ?></option>
+                        <?php $Query = mysql_query("SELECT * FROM inventario");
+                        while ($product = mysql_fetch_array($Query)) { ?>  
+                          <?php if ($id_producto != $product[id_producto]) { ?>
+                            <option value="<?php echo $product[id_producto]; ?>"><?php echo $product[nombre]; ?> </option>
+                          <?php } ?>
+                        <?php } ?>
+                      </select>
                     </div>
+                    <span class="help-block">Requerido.</span>
                   </div>
                   <div class="control-group">
-                    <label class="control-label" for="direccion">Direccion</label>
-                    <div class="input">
-                      <input class="span5" id="direccion" name="direccion" type="text" value="<?php echo $direccion ?>"/>
+                    <label class="control-label" for="unidades">Unidades</label>
+                    <div class="controls">
+                      <div class="input-append">
+                        <input class="span2" id="unidades" name="unidades" size="16" type="text" value="<?php echo $unidades ?>"/>
+                        <span class="add-on">0</span>
+                      </div>
                       <span class="help-block">Requerido.</span>
                     </div>
-                  </div>
-                  <div class="form-actions">
+                  </div><div class="form-actions">
                     <button id="enviar" name="enviar" type="submit" class="btn btn-primary">Guardar</button>
-                    <button type="reset" class="btn" onclick="location.href='../proveedor/index.php'">Cancel</button>
+                    <button type="reset" class="btn" onclick="location.href='../pedido/index.php'">Cancel</button>
                   </div>
                 </div>
                 <div class="span3">
                   <div class="control-group">
-                    <label class="control-label" for="telefono">Telefono</label>
+                    <label class="control-label" for="id_proveedor">Proveedor</label>
                     <div class="controls">
-                      <div class="input-append">
-                        <input class="span2" id="telefono" name="telefono" size="16" type="text" value="<?php echo $telefono ?>"/>
-                        <span class="add-on"><i class="icon-signal"></i></span>
-                      </div>
-                      <span class="help-block">Requerido.</span>
+                      <select id="id_proveedor" name="id_proveedor">
+                        <option value="<?php echo $id_proveedor ?>"><?php echo $proveedor ?></option>
+                        <?php $Query = mysql_query("SELECT * FROM proveedor");
+                        while ($suplier = mysql_fetch_array($Query)) { ?>  
+                          <?php if ($id_proveedor != $suplier[id_proveedor]) { ?>
+                            <option value="<?php echo $suplier[id_proveedor]; ?>"><?php echo $suplier[nombre]; ?> </option>
+                          <?php } ?>
+                        <?php } ?>
+                      </select>
                     </div>
+                    <span class="help-block">Requerido.</span>
                   </div>
                   <div class="control-group">
-                    <label class="control-label" for="email">Correo Electronico</label>
+                    <label class="control-label" for="precio">Precio</label>
                     <div class="controls">
                       <div class="input-append">
-                        <input class="span2" id="email" name="email" size="20" type="text" value="<?php echo $email ?>"/>
-                        <span class="add-on"><i class="icon-envelope"></i></span>
-                      </div>
-                      <span class="help-block">Requerido.</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="span3">
-                  <div class="control-group">
-                    <label class="control-label" for="rfc">Rfc</label>
-                    <div class="controls">
-                      <div class="input-append">
-                        <input class="span2" id="rfc" name="rfc" size="16" type="text" value="<?php echo $rfc ?>"/>
-                        <span class="add-on"><i class="icon-file"></i></span>
+                        <input class="span2" id="precio" name="precio" size="16" type="text" value="<?php echo $precio ?>"/>
+                        <span class="add-on">.00</span>
                       </div>
                       <span class="help-block">Requerido.</span>
                     </div>
