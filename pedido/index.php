@@ -29,6 +29,7 @@ include('../lock.php');
     <div>
       <div class="row">
         <?php include("../MenuNavegacion.php"); ?>
+        <?php include("../alertaExistencia.php"); ?>
         <div class="well main-container" >
           <div>
             <form class="form-search" style="text-align: center">

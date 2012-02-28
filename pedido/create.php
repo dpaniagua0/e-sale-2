@@ -30,11 +30,10 @@ include('../lock.php');
           url:          "../pedido/insert.php",
           success:      ajaxResponse,
           data:         {
-            nombre : $("#nombre").val(),
-            rfc : $("#rf").val(),
-            telefono: $("#telefono"),
-            direccion: $("#direccion"),
-            email: $("#email")          
+            unidades : $("#unidades").val(),
+            precio: $("#precio"),
+            id_proveedor: $("#id-proveedor"),
+            producto: $("#id-producto")          
           } 
         }
       
@@ -62,53 +61,50 @@ include('../lock.php');
               <div class="row">
                 <div class="span6">
                   <div class="clearfix">
-                    <label for="nombre">Nombre</label>
-                    <div class="input">
-                      <input class="span5" id="nombre" name="nombre" type="text"/>
-                      <span class="help-block">Requerido.</span>
+                    <label class="control-label" for="id-producto">Producto</label>
+                    <div class="controls">
+                      <select id="id-producto" name="producto">
+                        <?php $Query = mysql_query("SELECT id_producto, nombre FROM inventario");
+                        while ($item = mysql_fetch_array($Query)) { ?>  
+                          <option value="<?php echo $item[id_producto]; ?>"><?php echo $item[nombre]; ?> </option>
+                        <?php } ?>
+                      </select>
                     </div>
+                    <span class="help-block">Requerido.</span>
                   </div>
                   <div class="control-group">
-                    <label class="control-label" for="direccion">Direccion</label>
-                    <div class="input">
-                      <input class="span5" id="direccion" name="direccion" type="text"/>
+                    <label class="control-label" for="unidades">Unidades</label>
+                    <div class="controls">
+                      <div class="input-append">
+                        <input class="span2" id="unidades" name="unidades" size="16" type="text"/>
+                        <span class="add-on">0</span>
+                      </div>
                       <span class="help-block">Requerido.</span>
                     </div>
-                  </div>
-                  <div class="form-actions">
+                  </div><div class="form-actions">
                     <button id="enviar" name="enviar" type="submit" class="btn btn-primary">Guardar</button>
-                    <button type="reset" class="btn" onclick="location.href='../proveedor/index.php'">Cancel</button>
+                    <button type="reset" class="btn" onclick="location.href='../pedido/index.php'">Cancel</button>
                   </div>
                 </div>
                 <div class="span3">
                   <div class="control-group">
-                    <label class="control-label" for="telefono">Telefono</label>
+                    <label class="control-label" for="id_proveedor">Proveedor</label>
                     <div class="controls">
-                      <div class="input-append">
-                        <input class="span2" id="telefono" name="telefono" size="16" type="text"/>
-                        <span class="add-on"><i class="icon-signal"></i></span>
-                      </div>
-                      <span class="help-block">Requerido.</span>
+                      <select id="id_proveedor" name="id_proveedor">
+                        <?php $Query = mysql_query("SELECT * FROM proveedor");
+                        while ($suplier = mysql_fetch_array($Query)) { ?>  
+                          <option value="<?php echo $suplier[id_proveedor]; ?>"><?php echo $suplier[nombre]; ?> </option>
+                        <?php } ?>
+                      </select>
                     </div>
+                    <span class="help-block">Requerido.</span>
                   </div>
                   <div class="control-group">
-                    <label class="control-label" for="email">Correo Electronico</label>
+                    <label class="control-label" for="precio">Precio</label>
                     <div class="controls">
                       <div class="input-append">
-                        <input class="span2" id="email" name="email" size="20" type="text"/>
-                        <span class="add-on"><i class="icon-envelope"></i></span>
-                      </div>
-                      <span class="help-block">Requerido.</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="span3">
-                  <div class="control-group">
-                    <label class="control-label" for="rfc">Rfc</label>
-                    <div class="controls">
-                      <div class="input-append">
-                        <input class="span2" id="rfc" name="rfc" size="16" type="text"/>
-                        <span class="add-on"><i class="icon-file"></i></span>
+                        <input class="span2" id="precio" name="precio" size="16" type="text"/>
+                        <span class="add-on">.00</span>
                       </div>
                       <span class="help-block">Requerido.</span>
                     </div>

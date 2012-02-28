@@ -2,33 +2,32 @@
 
 include("../config.php");
 include('../lock.php');
-$nombre = $_POST['nombre'];
-$email = $_POST['email'];
-$rfc = $_POST['rfc'];
-$direccion = $_POST['direccion'];
-$telefono = $_POST['telefono'];
-if (!empty($nombre) && !empty($email) && !empty($rfc) && !empty($direccion) && !empty($telefono)) {
-  $insertSuplier = "INSERT INTO proveedor(nombre,direccion,correo_electronico,telefono,rfc) VALUES('$nombre','$direccion','$email','$telefono','$rfc')";
-  $result = mysql_query($insertSuplier);
+$id_producto = $_POST['producto'];
+$id_proveedor = $_POST['id_proveedor'];
+$precio = $_POST['precio'];
+$unidades = $_POST['unidades'];
+if (!empty($id_producto) && !empty($id_proveedor) && !empty($precio) && !empty($unidades)) {
+  $insertOrder = "INSERT INTO pedido(id_producto,id_proveedor,precio,unidades) VALUES('$id_producto','$id_proveedor','$precio','$unidades')";
+  $result = mysql_query($insertOrder);
   echo mysql_error();
   if ($result) {
     echo $_SESSION['ok'] = "<div id='message-container' class='message-container alert alert-success hidden' style='text-align: center'> 
     <a data-dismiss='alert' href='#' class='close'>&times;</a>
-          <p id='message' class='message'>El proveedor ha sido registrado con exito.</p>
+          <p id='message' class='message'>El pedido ha sido registrado con exito.</p>
           </div>";
-    header("location:../proveedor/create.php");
+    header("location:../pedido/create.php");
   } else {
     echo $_SESSION['wrong'] = "<div id='message-container' class='message-container alert alert-error hidden' style='text-align: center'>    
     <a data-dismiss='alert' href='#' class='close'>&times;</a>
-    <p id='message-error' class='message-error'>El proveedor no se pudo registrar.</p> 
+    <p id='message-error' class='message-error'>El pedido no se pudo registrar.</p> 
      </div> ";
-    header("location:../proveedor/create.php");
+    header("location:../pedido/create.php");
   }
 } else {
   echo $_SESSION['wrong'] = "<div id='message-container' class='message-container alert alert-error hidden' style='text-align: center'>    
     <a data-dismiss='alert' href='#' class='close'>&times;</a>
     <p id='message-error' class='message-error'>Todos los campos son requeridos.</p> 
      </div> ";
-  header("location:../proveedor/create.php");
+  header("location:../pedido/create.php");
 }
 ?>
