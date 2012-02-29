@@ -31,12 +31,12 @@ include('../lock.php');
         <?php include("../MenuNavegacion.php"); ?>
         <?php include("../alertaExistencia.php"); ?>
         <div class="well main-container" >
-          <div>
+<!--          <div>
             <form class="form-search" style="text-align: center">
               <input type="text" class="input-xxlarge search-query"/>
               <button type="submit" class="btn">Buscar</button>
             </form>
-          </div>
+          </div>-->
           <div class="btn-group nav-action">
             <a class="btn btn-primary" href="#"><i class="icon-white icon-cog"></i></a>
             <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
